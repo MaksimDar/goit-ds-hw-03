@@ -58,9 +58,8 @@ for qoute in qoutes:
     #Find description
     description = biography_soup.find('div', class_='author-description')
     description_text = description.text
-    
-    authors.append({"fullname": author_title_text, "born_date": born_date_text,
-    "born_location": born_place_text,"description": description_text.strip()})
+    if not any (author['fullname'] == author_title_text for author in authors):
+        authors.append({"fullname": author_title_text, "born_date": born_date_text,"born_location": born_place_text,"description": description_text.strip()})
 
 
 
